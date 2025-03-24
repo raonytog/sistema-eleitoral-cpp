@@ -18,8 +18,6 @@ private:
     int votosNominais;
     int votosLegenda;
 
-    list<Candidato*> candidatos;
-
     Candidato *maisVotado;
     Candidato *menosVotado;
 
@@ -28,16 +26,15 @@ public:
     int getNumero() const;
     string getSigla() const;
     int getFederacao() const;
-    list<Candidato> getCandidatos() const;
     int getTotalEleitos() const;
     int getVotosNominais() const;
     int getVotosLegenda() const;
     int getVotosTotais() const;
-    Candidato getMaisVotado() const;
-    Candidato getMenosVotado() const;
-    void setMaisVotado(Candidato candidato);
-    void setMenosVotado(Candidato candidato);
-    void addCandidato(Candidato candidato);
+    Candidato *getMaisVotado() const;
+    Candidato *getMenosVotado() const;
+    void setMaisVotado(Candidato *candidato);
+    void setMenosVotado(Candidato *candidato);
+    void addCandidato(Candidato *candidato);
     void somaVotosLegenda(int qtdVotos);
     void somaVotosNominais(int qtdVotos);
     void incrementaEleitos();

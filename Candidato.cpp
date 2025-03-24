@@ -1,15 +1,15 @@
 #include "Candidato.hpp"
 #include <iostream>
 
-Candidato::Candidato(const string& nome, const int& numero, const Partido& partido, const string& nascimento, const int& eleito, const int& genero) {
+Candidato::Candidato(const string& nome, const int& numero, Partido& partido, const string& nascimento, const int& eleito, const bool& genero) {
     this->nome = nome;
     this->numero = numero;
-    this->partido = partido;
+    this->partido = &partido;
     this->nascimento = nascimento;
     this->eleito = eleito;
     this->genero = genero;
 
-    if (this->getCandidadoFoiEleito()) this->getPartido().incrementaEleitos();
+    if (this->getCandidatoFoiEleito()) this->getPartido()->incrementaEleitos();
 }
 
 string Candidato::getNome() const {
@@ -25,7 +25,7 @@ Partido* Candidato::getPartido() const {
 }
 
 int Candidato::getNumeroPartido() const {
-    return this->getPartido().getNumero();
+    return this->getPartido()->getNumero();
 }
 
 int Candidato::getVotos() const {
@@ -42,13 +42,13 @@ int Candidato::getEleito() const {
 
 void Candidato::somaVotos(int qtdVotos) { 
     this->votos += qtdVotos;
-    this->partido.somaVotosNominais(qtdVotos);
+    this->partido->somaVotosNominais(qtdVotos);
 }
 int Candidato::getIdade() const {
     return 99999;
 }
 
-bool Candidato::getCandidadoFoiEleito() const {
+bool Candidato::getCandidatoFoiEleito() const {
     return this->getEleito() == this->ELEITO_MEDIA || this->getEleito() == this->ELEITO_QP;
 }
 

@@ -17,14 +17,14 @@ private:
     int votos;
 
     string nascimento;
-    int genero;
+    bool genero;
     int eleito;
 
     const int ELEITO_QP = 2;
     const int ELEITO_MEDIA = 3;
 
 public:
-    Candidato(const string& nome, const int& numero, const Partido& partido, const string& nascimento, const int& eleito, const int& genero);
+    Candidato(const string& nome, const int& numero, Partido& partido, const string& nascimento, const int& eleito, const bool& genero);
     string getNome() const;
     int getNumero() const;
     Partido *getPartido() const;
@@ -34,7 +34,7 @@ public:
     int getEleito() const;
     void somaVotos(int qtdVotos);
     int getIdade() const;
-    bool getCandidadoFoiEleito() const;
+    bool getCandidatoFoiEleito() const;
     void printCandidato() const;
 };
 

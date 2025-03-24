@@ -19,7 +19,8 @@ SistemaEleitoral::SistemaEleitoral(int &codMunicipio, string &pathCandidatos, st
     getline(in, line);
 
     string nomeCandidato = "", siglaPartido = "", nascimento = "";
-    int numeroCandidato = 0, codUE = 0, codCargo = 0, genero = 0, eleito = 0, numeroPartido = 0, numeroFederacao = 0;
+    int numeroCandidato = 0, codUE = 0, codCargo = 0, eleito = 0, numeroPartido = 0, numeroFederacao = 0;
+    bool genero = 0;
 
     while (getline(in, line)) {
         istringstream lineStream(line);
@@ -62,10 +63,10 @@ SistemaEleitoral::SistemaEleitoral(int &codMunicipio, string &pathCandidatos, st
 
         /** Caso seja o municipio em analise e vereador e o candidato continua na eleicao */
         if (codUE == codMunicipio && codCargo == CARGO_VEREADOR && eleito > CANDIDATURA_INVALIDA) {
-            Candidato *candidato = new Candidato(nomeCandidato, numeroCandidato, this->partidos.at(numeroPartido), nascimento, eleito, genero)
+            Candidato *candidato = new Candidato(nomeCandidato, numeroCandidato, *this->partidos.at(numeroPartido), nascimento, eleito, genero);
             this->candidatos.insert({numeroCandidato, candidato});
 
-            if (candidato.getCandidatoFoiEleito()) {
+            if (candidato->getCandidatoFoiEleito()) {
                 this->qtdEleitos++;
                 this->eleitos.push_back(candidato);
             }

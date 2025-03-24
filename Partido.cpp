@@ -19,11 +19,6 @@ int Partido::getFederacao() const {
     return this->federacao;
 }
 
-list<Candidato*> Partido::getCandidatos() const {
-    list<Candidato*> copy(this->candidatos);
-    return copy;
-}
-
 int Partido::getTotalEleitos() const {
     return this->totalEleitos;
 }
@@ -57,18 +52,18 @@ void Partido::setMenosVotado(Candidato* candidato) {
 }
 
 void Partido::addCandidato(Candidato* candidato) {
-    if (this->maisVotado == null && this->menosVotado == null) {
-        setMaisVotado(candidato);
-        setMenosVotado(candidato);
+    if (this->maisVotado == NULL && this->menosVotado == NULL) {
+        this->setMaisVotado(candidato);
+        this->setMenosVotado(candidato);
     }
 
-    if (candidato.getVotos() > this->getMaisVotado().getVotos()) this->setMaisVotado(candidato);
-    else if (candidato.getVotos() == this->getMaisVotado().getVotos()) {
+    if (candidato->getVotos() > this->getMaisVotado()->getVotos()) this->setMaisVotado(candidato);
+    else if (candidato->getVotos() == this->getMaisVotado()->getVotos()) {
         // if (Period.between(candidato.getNascimento(), this.getMaisVotado().getNascimento()).getDays() > 0) this.setMaisVotado(candidato);
     }
 
-    if (candidato.getVotos() < this->getMenosVotado().getVotos()) this->setMenosVotado(candidato);
-    else if (candidato.getVotos() == this->getMenosVotado().getVotos()) {
+    if (candidato->getVotos() < this->getMenosVotado()->getVotos()) this->setMenosVotado(candidato);
+    else if (candidato->getVotos() == this->getMenosVotado()->getVotos()) {
         // if (Period.between(candidato.getNascimento(), this.getMenosVotado().getNascimento()).getDays() < 0) this.setMenosVotado(candidato);
     }
 }
