@@ -4,6 +4,7 @@
 #include <string>
 #include <list>
 
+class Candidato;
 #include "Candidato.hpp"
 
 using namespace std;

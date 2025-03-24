@@ -1,5 +1,6 @@
 #include "Candidato.hpp"
 #include <iostream>
+#include <sstream>
 
 Candidato::Candidato(const string& nome, const int& numero, Partido& partido, const string& nascimento, const int& eleito, const bool& genero) {
     this->nome = nome;
@@ -52,6 +53,16 @@ bool Candidato::getCandidatoFoiEleito() const {
     return this->getEleito() == this->ELEITO_MEDIA || this->getEleito() == this->ELEITO_QP;
 }
 
-void Candidato::printCandidato() const {
-    cout << "teste" << endl;
+string Candidato::toString() const {
+    string answer;
+    std::locale brLocale("pt_BR.UTF-8");
+    std::stringstream votosFormatted;
+    votosFormatted.imbue(brLocale);
+    votosFormatted << votos;
+
+    if (this->partido->getFederacao() > 0) 
+        answer = "*" + nome + " (" + this->partido->getSigla() + ", " + votosFormatted.str() + " votos)";
+    else 
+        answer = nome + " (" + this->partido->getSigla() + ", " + votosFormatted.str() + " votos)";
+    return answer;
 }

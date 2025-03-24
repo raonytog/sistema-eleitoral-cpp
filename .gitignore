@@ -1,0 +1,7 @@
+testes/
+*.o
+main
+SistemaEleitoral
+Candidato
+Partido
+Relatorios

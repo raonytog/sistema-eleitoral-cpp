@@ -7,5 +7,4 @@ comp:
 	g++ *.cpp -o prog
 
 clean:
-	rm -f *.o
-	rm -f prog
+	rm -f *.o prog main SistemaEleitoral Candidato Partido Relatorios

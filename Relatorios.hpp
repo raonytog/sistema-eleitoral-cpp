@@ -9,11 +9,12 @@ class Relatorios {
 private:
     SistemaEleitoral *sistema;
 public:
-    Relatorios(SistemaEleitoral &sistema);
+    Relatorios(SistemaEleitoral *sistema);
     SistemaEleitoral *getSistemaEleitoral();
     void imprimeNumeroDeVagas();
     void imprimeVereadoresEleitos();
     void imprimeCandidatosMaisVotados();
+    void imprimeSeriamEleitos();
     void imprimeEleitosBeneficiados();
     void imprimePartidosMaisVotados();
     void imprimeExtremosDosPartidos();

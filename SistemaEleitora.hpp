@@ -24,12 +24,12 @@ private:
 
 public:
     SistemaEleitoral(int &codMunicipio, string &pathCandidatos, string &diaVotacao);
-    void ContabilidaVotos(string pathVotacao);
-    list<Partido> ordenaPartidos();
-    list<Partido> ordenaPartidosPorCandidato();
-    list<Candidato> ordenaCandidatos();
+    void ContabilizaVotos(string pathVotacao);
+    list<Partido*> ordenaPartidos();
+    list<Partido*> ordenaPartidosPorCandidato();
+    list<Candidato*> ordenaCandidatos();
     int getQtdEleitos();
-    list<Candidato> getCandidatosEleitos();
+    list<Candidato*> getCandidatosEleitos();
     // getDiaVotacao();
     int getVotosLegenda();
     int getVotosNominais();

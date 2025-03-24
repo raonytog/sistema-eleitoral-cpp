@@ -4,6 +4,7 @@
 
 #include <string>
 
+class Partido;
 #include "Partido.hpp"
 
 using namespace std;
@@ -35,7 +36,7 @@ public:
     void somaVotos(int qtdVotos);
     int getIdade() const;
     bool getCandidatoFoiEleito() const;
-    void printCandidato() const;
+    string toString() const;
 };
 
 #endif // !_CANDIDATO_HPP_
