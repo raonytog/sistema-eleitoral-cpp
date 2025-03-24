@@ -1,12 +1,12 @@
 #ifndef _PARTIDO_HPP_
 #define _PARTIDO_HPP_
 
-using namespace std;
-
 #include <string>
 #include <list>
 
 #include "Candidato.hpp"
+
+using namespace std;
 
 class Partido {
 private:
@@ -18,13 +18,12 @@ private:
     int votosNominais;
     int votosLegenda;
 
-    list<Candidato> candidatos;
+    list<Candidato*> candidatos;
 
-    Candidato maisVotado;
-    Candidato menosVotado;
+    Candidato *maisVotado;
+    Candidato *menosVotado;
 
 public:
-    Partido();
     Partido(const int& numero, const string& sigla, const int& federacao);
     int getNumero() const;
     string getSigla() const;

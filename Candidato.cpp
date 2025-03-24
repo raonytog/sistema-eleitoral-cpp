@@ -1,15 +1,6 @@
 #include "Candidato.hpp"
 #include <iostream>
 
-Candidato::Candidato() {
-    this->eleito = -1;
-    this->genero = -1;
-    this->nascimento = "";
-    this->nome = "";
-    this->numero = -1;
-    this->votos = -1;
-}
-
 Candidato::Candidato(const string& nome, const int& numero, const Partido& partido, const string& nascimento, const int& eleito, const int& genero) {
     this->nome = nome;
     this->numero = numero;
@@ -29,7 +20,7 @@ int Candidato::getNumero() const {
     return this->numero;
 }
 
-Partido Candidato::getPartido() const {
+Partido* Candidato::getPartido() const {
     return this->partido;
 }
 

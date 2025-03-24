@@ -1,16 +1,6 @@
 #include "Partido.hpp"
 #include <iostream>
 
-Partido::Partido() {
-    this->sigla = "";
-    this->numero = -1;
-    this->federacao = -1;
-    
-    this->totalEleitos = -1;
-    this->votosLegenda = -1;
-    this->votosNominais = -1;
-}
-
 Partido::Partido(const int& numero, const string& sigla, const int& federacao) {
     this->numero = numero;
     this->sigla = sigla;
@@ -29,8 +19,8 @@ int Partido::getFederacao() const {
     return this->federacao;
 }
 
-list<Candidato> Partido::getCandidatos() const {
-    list<Candidato> copy(this->candidatos);
+list<Candidato*> Partido::getCandidatos() const {
+    list<Candidato*> copy(this->candidatos);
     return copy;
 }
 
@@ -50,23 +40,23 @@ int Partido::getVotosTotais() const {
     return this->getVotosLegenda() + this->getVotosNominais();
 }
 
-Candidato Partido::getMaisVotado() const {
+Candidato* Partido::getMaisVotado() const {
     return this->maisVotado;
 }
 
-Candidato Partido::getMenosVotado() const {
+Candidato* Partido::getMenosVotado() const {
     return this->menosVotado;
 }
 
-void Partido::setMaisVotado(Candidato candidato) {
+void Partido::setMaisVotado(Candidato* candidato) {
     this->maisVotado = candidato;
 }
 
-void Partido::setMenosVotado(Candidato candidato) {
+void Partido::setMenosVotado(Candidato* candidato) {
     this->menosVotado = candidato;
 }
 
-void Partido::addCandidato(Candidato candidato) {
+void Partido::addCandidato(Candidato* candidato) {
     if (this->maisVotado == null && this->menosVotado == null) {
         setMaisVotado(candidato);
         setMenosVotado(candidato);
