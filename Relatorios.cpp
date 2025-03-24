@@ -36,8 +36,36 @@ void Relatorios::imprimeCandidatosMaisVotados() {
     }
 }
 
-void Relatorios::imprimeSeriamEleitos() {}
-void Relatorios::imprimeEleitosBeneficiados() {}
+void Relatorios::imprimeSeriamEleitos() {
+    cout << "Teriam sido eleitos se a votação fosse majoritária, e não foram eleitos:" << endl;
+    cout << "(com sua posição no ranking de mais votados)" << endl;
+    list<Candidato*> maisVotados = this->getSistemaEleitoral()->ordenaCandidatos();
+
+    int i = 1;
+    for (Candidato *candidato : maisVotados) {
+        if (i > this->getSistemaEleitoral()->getQtdEleitos()) break;
+
+        if (candidato->getCandidatoFoiEleito() == false) {
+            cout << i << " - ";
+            cout << candidato->toString() << endl;
+        }
+        i++;
+    }
+}
+void Relatorios::imprimeEleitosBeneficiados() {
+    cout << "Eleitos, que se beneficiaram do sistema proporcional:" << endl;
+    cout << "(com sua posição no ranking de mais votados)" << endl;
+
+    list<Candidato*> maisVotados = this->getSistemaEleitoral()->ordenaCandidatos();
+    int i = 1;
+    for (Candidato *candidato : maisVotados) {
+        if (i > this->getSistemaEleitoral()->getQtdEleitos() && candidato->getCandidatoFoiEleito()) {
+            cout << i << " - ";
+            cout << candidato->toString() << endl;
+        }
+        i++;
+    }
+}
 void Relatorios::imprimePartidosMaisVotados() {}
 void Relatorios::imprimeExtremosDosPartidos() {}
 void Relatorios::imprimeEleitosPorIdade() {}

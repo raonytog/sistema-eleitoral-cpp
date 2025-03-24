@@ -34,11 +34,11 @@ int main(int argc, char const *argv[]) {
     cout << endl;
     
     /** 4 */
-    //relatorios->imprimeSeriamEleitos();
+    relatorios->imprimeSeriamEleitos();
     cout << endl;
 
     /** 5 */
-    //relatorios->imprimeEleitosBeneficiados();
+    relatorios->imprimeEleitosBeneficiados();
     cout << endl;
 
     /** 6 */

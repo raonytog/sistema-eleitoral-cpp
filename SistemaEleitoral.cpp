@@ -157,8 +157,8 @@ void SistemaEleitoral::ContabilizaVotos(string pathVotacao) {
 }
 
 list<Partido*> SistemaEleitoral::ordenaPartidos() {
-    list<Candidato*> lista;
-    for (const auto& pair : this->candidatos) {
+    list<Partido*> lista;
+    for (const auto& pair : this->partidos) {
         lista.push_back(pair.second);
     }
     
@@ -171,8 +171,8 @@ list<Partido*> SistemaEleitoral::ordenaPartidos() {
  * mais votados de cada partido. Em caso de empate, o mais novo ganha
  */
 list<Partido*> SistemaEleitoral::ordenaPartidosPorCandidato() {
-    list<Candidato*> lista;
-    for (const auto& pair : this->candidatos) {
+    list<Partido*> lista;
+    for (const auto& pair : this->partidos) {
         lista.push_back(pair.second);
     }
     
