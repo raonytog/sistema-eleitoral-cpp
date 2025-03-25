@@ -40,7 +40,7 @@ static bool comparaCandidatos(Candidato* a, Candidato* b) {
     if (a->getVotos() != b->getVotos()) 
         return a->getVotos() > b->getVotos();
         
-    return a->getIdade(DATA_VOTACAO) < b->getIdade(DATA_VOTACAO);
+    return b->getIdade(DATA_VOTACAO) < a->getIdade(DATA_VOTACAO);
 }
 
 static bool comparaPartidos(Partido *a, Partido *b) {
@@ -153,6 +153,7 @@ void SistemaEleitoral::ContabilizaVotos(string pathVotacao) {
             } else {
                 if (this->candidatos.find(numero) != this->candidatos.end()) {
                     Candidato *candidato = this->candidatos.at(numero);
+                    
                     if (candidato != NULL) {
                         candidato->somaVotos(qtdVotos);
                         this->votosNominais += qtdVotos;

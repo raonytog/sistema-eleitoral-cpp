@@ -9,6 +9,7 @@ Candidato::Candidato(const string& nome, const int& numero, Partido& partido, co
     this->nascimento = nascimento;
     this->eleito = eleito;
     this->genero = genero;
+    this->votos = 0;
 
     if (this->getCandidatoFoiEleito()) this->getPartido()->incrementaEleitos();
 }
