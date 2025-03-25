@@ -62,7 +62,7 @@ static bool comparaPartidosPorCandidato(Partido *a, Partido *b) {
 
     int e = c->getVotos(), f = d->getVotos();
 
-    if (e != f) return f < e;
+    if (e - f != 0) return f < e;
     return d->getIdade(DATA_VOTACAO) > c->getIdade(DATA_VOTACAO);
 }
 

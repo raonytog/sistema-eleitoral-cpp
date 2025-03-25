@@ -14,7 +14,7 @@ void Relatorios::imprimeNumeroDeVagas() {
 }
 
 void Relatorios::imprimeVereadoresEleitos() {
-    cout << "Vereadoes eleitos:" << endl;
+    cout << "Vereadores eleitos:" << endl;
 
     int i = 1;
     for (Candidato *candidato : this->getSistemaEleitoral()->getCandidatosEleitos()) {
@@ -139,6 +139,10 @@ void Relatorios::imprimeExtremosDosPartidos() {
     }
 }
 
+class custom_numpunct : public numpunct<char> {
+	char do_decimal_point()   const { return ','; }  
+};
+
 void Relatorios::imprimeEleitosPorIdade() {
     int total = this->getSistemaEleitoral()->getCandidatosEleitos().size();
 
@@ -151,7 +155,9 @@ void Relatorios::imprimeEleitosPorIdade() {
         else if (idade < 60) menorQue60++;
         else demais++;
     }
-
+    
+    locale loc2(cout.getloc(), new custom_numpunct);
+	cout.imbue(loc2);
     cout << "Eleitos, por faixa etária (na data da eleição):" << endl;
     cout << "       Idade < 30: " << menorQue30 << " (" << fixed << setprecision(2) << (100.0 * menorQue30 / total) << "%)" << endl;
     cout << " 30 <= Idade < 40: " << menorQue40 << " (" << fixed << setprecision(2) << (100.0 * menorQue40 / total) << "%)" << endl;

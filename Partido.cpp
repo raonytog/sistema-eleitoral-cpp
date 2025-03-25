@@ -10,9 +10,6 @@ Partido::Partido(const int& numero, const string& sigla, const int& federacao) {
     this->totalEleitos = 0;
     this->votosNominais = 0;
     this->votosLegenda = 0;
-
-    Candidato *maisVotado = NULL;
-    Candidato *menosVotado = NULL;
 }
 
 int Partido::getNumero() const {
@@ -67,7 +64,7 @@ void Partido::addCandidato(Candidato* candidato) {
 
     if (candidato->getVotos() > this->getMaisVotado()->getVotos()) this->setMaisVotado(candidato);
     else if (candidato->getVotos() == this->getMaisVotado()->getVotos()) {
-        if (candidato->getIdade(DATA_VOTACAO) < this->getMaisVotado()->getIdade(DATA_VOTACAO)) this->setMaisVotado(candidato);
+        if (candidato->getIdade(DATA_VOTACAO) > this->getMaisVotado()->getIdade(DATA_VOTACAO)) this->setMaisVotado(candidato);
         // if (Period.between(candidato.getNascimento(), this.getMaisVotado().getNascimento()).getDays() > 0) this.setMaisVotado(candidato);
     }
 
