@@ -13,8 +13,6 @@ int main(int argc, char const *argv[]) {
         return 0;
     }
 
-    // int codUE = 1392;
-    // string candidatos = "testes/AC1392/in/candidatos.csv", votos = "testes/AC1392/in/votacao.csv";
     int codUE = stoi(argv[1]);
     string candidatos = argv[2], votos = argv[3], data = argv[4];
 
