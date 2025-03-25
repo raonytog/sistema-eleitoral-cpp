@@ -86,9 +86,31 @@ void Partido::somaVotosNominais(int qtdVotos) {
 void Partido::incrementaEleitos() {
     this->totalEleitos++;
 }
-#include <string> // Ensure this header is included for std::to_string
 
 string Partido::toString() const {
     string answer = this->getSigla() + " - " + to_string(this->getNumero());
     return answer;
+}
+
+bool comparaPartidos(Partido *a, Partido *b) {
+    int totalA = a->getVotosNominais() + a->getVotosLegenda();
+    int totalB = b->getVotosNominais() + b->getVotosLegenda();
+
+    if (totalA != totalB) 
+        return totalA > totalB;  // Retorna true se 'a' tiver mais votos
+
+    return a->getNumero() < b->getNumero();  // Ordena pelo número se os votos forem iguais
+}
+
+bool comparaPartidosPorCandidato(Partido *a, Partido *b) {
+    Candidato *c = a->getMaisVotado(), *d = b->getMaisVotado();
+
+    if (c == NULL && d == NULL) return false;
+    else if (c == NULL) return true;
+    else if (d == NULL) return false;
+
+    int e = c->getVotos(), f = d->getVotos();
+
+    if (e - f != 0) return f < e;
+    return d->getIdade(DATA_VOTACAO) > c->getIdade(DATA_VOTACAO);
 }

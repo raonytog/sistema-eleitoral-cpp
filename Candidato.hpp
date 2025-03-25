@@ -112,4 +112,6 @@ public:
     string toString() const;
 };
 
+bool comparaCandidatos(Candidato* a, Candidato* b);
+
 #endif // !_CANDIDATO_HPP_

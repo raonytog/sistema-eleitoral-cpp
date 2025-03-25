@@ -143,4 +143,7 @@ public:
     string toString() const;
 };
 
+bool comparaPartidos(Partido *a, Partido *b);
+bool comparaPartidosPorCandidato(Partido *a, Partido *b);
+
 #endif // !_PARTIDO_HPP_

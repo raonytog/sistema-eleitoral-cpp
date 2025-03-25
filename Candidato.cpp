@@ -5,6 +5,8 @@
 #include <iostream>
 #include <sstream>
 
+#define DATA_VOTACAO "06/10/2024"
+
 Candidato::Candidato(const string& nome, const int& numero, Partido& partido, const string& nascimento, const int& eleito, const bool& genero) {
     this->nome = nome;
     this->numero = numero;
@@ -94,4 +96,11 @@ string Candidato::toString() const {
     if (this->partido->getFederacao() > 0) answer = "*" + nomeFormatted.str() + " (" + this->partido->getSigla() + ", " + votosFormatted.str() + " votos)";
     else  answer = nomeFormatted.str() + " (" + this->partido->getSigla() + ", " + votosFormatted.str() + " votos)";
     return answer;
+}
+
+bool comparaCandidatos(Candidato* a, Candidato* b) {
+    if (a->getVotos() != b->getVotos()) 
+        return a->getVotos() > b->getVotos();
+        
+    return b->getIdade(DATA_VOTACAO) < a->getIdade(DATA_VOTACAO);
 }

@@ -35,36 +35,6 @@ static string removeAspas(string s) {
     return s;
 }
 
-static bool comparaCandidatos(Candidato* a, Candidato* b) {
-    if (a->getVotos() != b->getVotos()) 
-        return a->getVotos() > b->getVotos();
-        
-    return b->getIdade(DATA_VOTACAO) < a->getIdade(DATA_VOTACAO);
-}
-
-static bool comparaPartidos(Partido *a, Partido *b) {
-    int totalA = a->getVotosNominais() + a->getVotosLegenda();
-    int totalB = b->getVotosNominais() + b->getVotosLegenda();
-
-    if (totalA != totalB) 
-        return totalA > totalB;  // Retorna true se 'a' tiver mais votos
-
-    return a->getNumero() < b->getNumero();  // Ordena pelo número se os votos forem iguais
-}
-
-static bool comparaPartidosPorCandidato(Partido *a, Partido *b) {
-    Candidato *c = a->getMaisVotado(), *d = b->getMaisVotado();
-
-    if (c == NULL && d == NULL) return false;
-    else if (c == NULL) return true;
-    else if (d == NULL) return false;
-
-    int e = c->getVotos(), f = d->getVotos();
-
-    if (e - f != 0) return f < e;
-    return d->getIdade(DATA_VOTACAO) > c->getIdade(DATA_VOTACAO);
-}
-
 SistemaEleitoral::SistemaEleitoral(int &codMunicipio, string &pathCandidatos, string &diaVotacao) {
     this->codMunicipio = codMunicipio;
     this->qtdEleitos = this->votosLegenda = this->votosNominais = 0;
@@ -187,10 +157,6 @@ list<Partido*> SistemaEleitoral::ordenaPartidos() {
     return lista;
 }
 
-/**
- * @return Lista de partidos ordenados de forma decrescente pelo numero de votos dos candidatos
- * mais votados de cada partido. Em caso de empate, o mais novo ganha
- */
 list<Partido*> SistemaEleitoral::ordenaPartidosPorCandidato() {
     list<Partido*> lista;
     for (const auto& pair : this->partidos) {
@@ -201,10 +167,6 @@ list<Partido*> SistemaEleitoral::ordenaPartidosPorCandidato() {
     return lista;
 }
 
-    /**
- * @return Lista de candidatos ordenados de forma decrescente pelo numero 
- * de votos dos candidatos. Em caso de empate, o mais novo ganha
- */
 list<Candidato*> SistemaEleitoral::ordenaCandidatos() {
     list<Candidato*> lista;
     for (const auto& pair : this->candidatos) {
@@ -215,37 +177,22 @@ list<Candidato*> SistemaEleitoral::ordenaCandidatos() {
     return lista;
 }
 
-/**
- * @return Retorna a quantidade de vereadores eleitos na eleicao
- */
 int SistemaEleitoral::getQtdEleitos() {
     return this->qtdEleitos;
 }
 
-/**
- * @return Retorna a lista de candidatos eleitos
- */
 list<Candidato*> SistemaEleitoral::getCandidatosEleitos() {
     return this->eleitos;
 }
 
-/**
- * @return Retorna o dia da apuração dos votos
- */
 string SistemaEleitoral::getDiaVotacao() const {
     return DATA_VOTACAO;
 }
 
-/**
- * @return Retorna a quantidade de votos de legenda
- */
 int SistemaEleitoral::getVotosLegenda() {
     return this->votosLegenda;
 }
 
-/**
- * @return Retorna a quantidade de votos nominais
- */
 int SistemaEleitoral::getVotosNominais() { 
     return this->votosNominais;
 }

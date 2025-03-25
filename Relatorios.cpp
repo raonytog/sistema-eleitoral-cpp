@@ -12,6 +12,7 @@ SistemaEleitoral *Relatorios::getSistemaEleitoral() {
 void Relatorios::imprimeNumeroDeVagas() {
     cout << "Número de vagas: " << this->getSistemaEleitoral()->getQtdEleitos() << endl;
     cout << endl;
+    cout.imbue(locale("C"));
 }
 
 void Relatorios::imprimeVereadoresEleitos() {
@@ -25,6 +26,7 @@ void Relatorios::imprimeVereadoresEleitos() {
         i++;
     }
     cout << endl;
+    cout.imbue(locale("C"));
 }
 
 void Relatorios::imprimeCandidatosMaisVotados() {
@@ -39,6 +41,7 @@ void Relatorios::imprimeCandidatosMaisVotados() {
         i++;
     }
     cout << endl;
+    cout.imbue(locale("C"));
 }
 
 void Relatorios::imprimeSeriamEleitos() {
@@ -57,6 +60,7 @@ void Relatorios::imprimeSeriamEleitos() {
         i++;
     }
     cout << endl;
+    cout.imbue(locale("C"));
 }
 
 void Relatorios::imprimeEleitosBeneficiados() {
@@ -73,6 +77,7 @@ void Relatorios::imprimeEleitosBeneficiados() {
         i++;
     }
     cout << endl;
+    cout.imbue(locale("C"));
 }
 
 void Relatorios::imprimePartidosMaisVotados() {
@@ -110,6 +115,7 @@ void Relatorios::imprimePartidosMaisVotados() {
         i++;
     }
     cout << endl;
+    cout.imbue(locale("C"));
 }
 
 void Relatorios::imprimeExtremosDosPartidos() {
@@ -144,6 +150,7 @@ void Relatorios::imprimeExtremosDosPartidos() {
         i++;
     }
     cout << endl;
+    cout.imbue(locale("C"));
 }
 
 class custom_numpunct : public numpunct<char> {
