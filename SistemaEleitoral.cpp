@@ -94,10 +94,12 @@ SistemaEleitoral::SistemaEleitoral(int &codMunicipio, string &pathCandidatos, st
             else if (i == 38) { stoi(aux) == 2 ? genero = HOMEM : genero = MULHER; } 
             else if (i == 48) { eleito = stoi(aux); }
         }
-
+        
         /** Se o partido nao existir, cria e insere-o na hash */
         if (this->partidos.find(numeroPartido) == this->partidos.end()) {
             Partido *partido = new Partido(numeroPartido, siglaPartido, numeroFederacao);
+            partido->setMaisVotado(NULL);
+            partido->setMenosVotado(NULL);
             this->partidos.insert({numeroPartido, partido});
         }
 

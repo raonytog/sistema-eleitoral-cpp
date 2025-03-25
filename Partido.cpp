@@ -58,7 +58,7 @@ void Partido::setMenosVotado(Candidato* candidato) {
 }
 
 void Partido::addCandidato(Candidato* candidato) {
-    if (this->maisVotado == NULL && this->menosVotado == NULL) {
+    if (this->maisVotado == NULL || this->menosVotado == NULL) {
         this->setMaisVotado(candidato);
         this->setMenosVotado(candidato);
     }
