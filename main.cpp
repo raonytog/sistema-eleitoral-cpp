@@ -30,8 +30,8 @@ int main(int argc, char const *argv[]) {
     cout << endl;
     
      /** 3 */
-     relatorios->imprimeCandidatosMaisVotados();
-     cout << endl;
+    relatorios->imprimeCandidatosMaisVotados();
+    cout << endl;
 
     /** 4 */
     relatorios->imprimeSeriamEleitos();
