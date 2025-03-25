@@ -38,7 +38,7 @@ public:
     int getEleito() const;
     bool getGenero() const;
     void somaVotos(int qtdVotos);
-    int getIdade(const string& diaVotacao) const;
+    int getIdade(const string& dataVotacao) const;
     bool getCandidatoFoiEleito() const;
     string toString() const;
 };

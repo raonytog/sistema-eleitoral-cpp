@@ -144,7 +144,7 @@ void Relatorios::imprimeEleitosPorIdade() {
 
     int idade, menorQue30 = 0, menorQue40 = 0, menorQue50 = 0, menorQue60 = 0, demais = 0;
     for (Candidato* c : this->getSistemaEleitoral()->getCandidatosEleitos()) {
-        idade = c->getIdade(this->getSistemaEleitoral()->getDiaVotacao());
+        idade = c->getIdade( this->getSistemaEleitoral()->getDiaVotacao() );
         if (idade < 30) menorQue30++;
         else if (idade < 40) menorQue40++;
         else if (idade < 50) menorQue50++;

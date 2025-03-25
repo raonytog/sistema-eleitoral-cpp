@@ -1,4 +1,7 @@
 #include "Candidato.hpp"
+
+#include <ctime>
+#include <sstream>
 #include <iostream>
 #include <sstream>
 
@@ -34,8 +37,11 @@ int Candidato::getVotos() const {
     return this->votos;
 }
 
-string Candidato::getNascimento() const { 
-    return this->nascimento;
+string Candidato::getNascimento() const {
+    string s = this->nascimento;
+    s.erase(s.begin());
+    s.erase(s.end()-1);
+    return s;
 }
 
 int Candidato::getEleito() const {
@@ -51,8 +57,23 @@ void Candidato::somaVotos(int qtdVotos) {
     this->partido->somaVotosNominais(qtdVotos);
 }
 
-int Candidato::getIdade(const string& diaVotacao) const {
-    return 99999;
+int Candidato::getIdade(const string& dataVotacao) const {
+    int diaNascimento, mesNascimento, anoNascimento;
+    char delimiter;
+    
+    stringstream nascimentoStream( this->getNascimento()) ;
+    nascimentoStream >> diaNascimento >> delimiter >> mesNascimento >> delimiter >> anoNascimento;
+
+    int diaVotacao, mesVotacao, anoVotacao;
+    stringstream votacaoStream(dataVotacao);
+    votacaoStream >> diaVotacao >> delimiter >> mesVotacao >> delimiter >> anoVotacao;
+    
+    int age = anoVotacao - anoNascimento;
+    if (mesVotacao < mesNascimento || (mesVotacao == mesNascimento && diaVotacao < diaNascimento)) {
+        age--;
+    }
+
+    return age;
 }
 
 bool Candidato::getCandidatoFoiEleito() const {
