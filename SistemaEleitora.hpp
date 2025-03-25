@@ -6,6 +6,8 @@
 #include "Candidato.hpp"
 #include "Partido.hpp"
 
+#define DATA_VOTACAO "06/10/2024"
+
 #define CARGO_VEREADOR 13
 #define CANDIDATURA_INVALIDA -1
 
@@ -17,7 +19,7 @@ private:
     map<int, Partido*> partidos;
     
     list<Candidato*> eleitos;
-    string diaDepuracao;
+    string diaVotacao;
 
     int qtdEleitos, votosLegenda, votosNominais;
     int codMunicipio;
@@ -30,7 +32,7 @@ public:
     list<Candidato*> ordenaCandidatos();
     int getQtdEleitos();
     list<Candidato*> getCandidatosEleitos();
-    // getDiaVotacao();
+    string getDiaVotacao() const;
     int getVotosLegenda();
     int getVotosNominais();
 };

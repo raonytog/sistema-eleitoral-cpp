@@ -5,6 +5,12 @@ Partido::Partido(const int& numero, const string& sigla, const int& federacao) {
     this->numero = numero;
     this->sigla = sigla;
     this->federacao = federacao;
+    this->totalEleitos = 0;
+    this->votosNominais = 0;
+    this->votosLegenda = 0;
+
+    Candidato *maisVotado = NULL;
+    Candidato *menosVotado = NULL;
 }
 
 int Partido::getNumero() const {
@@ -78,4 +84,10 @@ void Partido::somaVotosNominais(int qtdVotos) {
 
 void Partido::incrementaEleitos() {
     this->totalEleitos++;
+}
+#include <string> // Ensure this header is included for std::to_string
+
+string Partido::toString() const {
+    string answer = this->getSigla() + " - " + to_string(this->getNumero());
+    return answer;
 }

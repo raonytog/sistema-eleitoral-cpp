@@ -39,6 +39,7 @@ public:
     void somaVotosLegenda(int qtdVotos);
     void somaVotosNominais(int qtdVotos);
     void incrementaEleitos();
+    string toString() const;
 };
 
 #endif // !_PARTIDO_HPP_

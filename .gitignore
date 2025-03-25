@@ -1,6 +1,7 @@
 testes/
 *.o
 main
+prog
 SistemaEleitoral
 Candidato
 Partido

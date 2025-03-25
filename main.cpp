@@ -9,7 +9,7 @@ using namespace std;
 
 int main(int argc, char const *argv[]) {
     if (argc < 4) {
-        cout << "Quantidade de argumentos insuficiente para funcionamento do programa\n" << endl;
+        // cout << "Quantidade de argumentos insuficiente para funcionamento do programa\n" << endl;
         // return 0;
     }
 
@@ -29,37 +29,37 @@ int main(int argc, char const *argv[]) {
     relatorios->imprimeVereadoresEleitos();
     cout << endl;
     
-    /** 3 */
-    relatorios->imprimeCandidatosMaisVotados();
-    cout << endl;
+    // /** 3 */
+    // relatorios->imprimeCandidatosMaisVotados();
+    // cout << endl;
     
-    /** 4 */
-    relatorios->imprimeSeriamEleitos();
-    cout << endl;
+    // /** 4 */
+    // relatorios->imprimeSeriamEleitos();
+    // cout << endl;
 
-    /** 5 */
-    relatorios->imprimeEleitosBeneficiados();
-    cout << endl;
+    // /** 5 */
+    // relatorios->imprimeEleitosBeneficiados();
+    // cout << endl;
 
-    /** 6 */
-    //relatorios->imprimePartidosMaisVotados();
-    cout << endl;
+    // /** 6 */
+    // relatorios->imprimePartidosMaisVotados();
+    // cout << endl;
 
-    /** 7 */
-    //relatorios->imprimeExtremosDosPartidos();
-    cout << endl;
+    // /** 7 */
+    // relatorios->imprimeExtremosDosPartidos();
+    // cout << endl;
 
-    /** 8 */
-    //relatorios->imprimeEleitosPorIdade();
-    cout << endl;
+    // /** 8 */
+    // relatorios->imprimeEleitosPorIdade();
+    // cout << endl;
 
-    /** 9 */
-    //relatorios->imprimeEleitosPorGenero();
-    cout << endl;
+    // /** 9 */
+    // relatorios->imprimeEleitosPorGenero();
+    // cout << endl;
 
-    /** 10 */
-    //relatorios->imprimePorcentagensDeVoto();
-    cout << endl;
+    // /** 10 */
+    // relatorios->imprimePorcentagensDeVoto();
+    // cout << endl;
     
     return 0;
 }

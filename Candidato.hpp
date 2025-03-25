@@ -9,6 +9,9 @@ class Partido;
 
 using namespace std;
 
+#define MULHER true
+#define HOMEM false
+
 class Candidato {
 private:
     string nome;
@@ -25,7 +28,7 @@ private:
     const int ELEITO_MEDIA = 3;
 
 public:
-    Candidato(const string& nome, const int& numero, Partido& partido, const string& nascimento, const int& eleito, const bool& genero);
+    Candidato(const string& nome, const int& numero, Partido &partido, const string& nascimento, const int& eleito, const bool& genero);
     string getNome() const;
     int getNumero() const;
     Partido *getPartido() const;
@@ -33,8 +36,9 @@ public:
     int getVotos() const;
     string getNascimento() const;
     int getEleito() const;
+    bool getGenero() const;
     void somaVotos(int qtdVotos);
-    int getIdade() const;
+    int getIdade(const string& diaVotacao) const;
     bool getCandidatoFoiEleito() const;
     string toString() const;
 };

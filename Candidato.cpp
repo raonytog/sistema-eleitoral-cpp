@@ -41,11 +41,16 @@ int Candidato::getEleito() const {
     return this->eleito;
 }
 
+bool Candidato::getGenero() const {
+    return this->genero;
+}
+
 void Candidato::somaVotos(int qtdVotos) { 
     this->votos += qtdVotos;
     this->partido->somaVotosNominais(qtdVotos);
 }
-int Candidato::getIdade() const {
+
+int Candidato::getIdade(const string& diaVotacao) const {
     return 99999;
 }
 
@@ -55,14 +60,16 @@ bool Candidato::getCandidatoFoiEleito() const {
 
 string Candidato::toString() const {
     string answer;
-    std::locale brLocale("pt_BR.UTF-8");
-    std::stringstream votosFormatted;
-    votosFormatted.imbue(brLocale);
-    votosFormatted << votos;
+    locale brLocale("pt_BR.UTF-8");
+    stringstream votosFormatted, nomeFormatted;
 
-    if (this->partido->getFederacao() > 0) 
-        answer = "*" + nome + " (" + this->partido->getSigla() + ", " + votosFormatted.str() + " votos)";
-    else 
-        answer = nome + " (" + this->partido->getSigla() + ", " + votosFormatted.str() + " votos)";
+    votosFormatted.imbue(brLocale);
+    votosFormatted << this->getVotos();
+
+    nomeFormatted.imbue(brLocale);
+    nomeFormatted << this->getNome();
+     
+    if (this->partido->getFederacao() > 0) answer = "*" + nomeFormatted.str() + " (" + this->partido->getSigla() + ", " + votosFormatted.str() + " votos)";
+    else  answer = nomeFormatted.str() + " (" + this->partido->getSigla() + ", " + votosFormatted.str() + " votos)";
     return answer;
 }

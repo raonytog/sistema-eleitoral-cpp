@@ -1,6 +1,8 @@
 #ifndef _RELATORIOS_HPP_
 #define _RELATORIOS_HPP_
 
+#include <locale>
+
 #include "SistemaEleitora.hpp"
 
 using namespace std;
