@@ -1,6 +1,8 @@
 #include "Partido.hpp"
 #include <iostream>
 
+#define DATA_VOTACAO "06/10/2024"
+
 Partido::Partido(const int& numero, const string& sigla, const int& federacao) {
     this->numero = numero;
     this->sigla = sigla;
@@ -65,11 +67,13 @@ void Partido::addCandidato(Candidato* candidato) {
 
     if (candidato->getVotos() > this->getMaisVotado()->getVotos()) this->setMaisVotado(candidato);
     else if (candidato->getVotos() == this->getMaisVotado()->getVotos()) {
+        if (candidato->getIdade(DATA_VOTACAO) < this->getMaisVotado()->getIdade(DATA_VOTACAO)) this->setMaisVotado(candidato);
         // if (Period.between(candidato.getNascimento(), this.getMaisVotado().getNascimento()).getDays() > 0) this.setMaisVotado(candidato);
     }
 
     if (candidato->getVotos() < this->getMenosVotado()->getVotos()) this->setMenosVotado(candidato);
     else if (candidato->getVotos() == this->getMenosVotado()->getVotos()) {
+        if (candidato->getIdade(DATA_VOTACAO) < this->getMenosVotado()->getIdade(DATA_VOTACAO)) this->setMenosVotado(candidato);
         // if (Period.between(candidato.getNascimento(), this.getMenosVotado().getNascimento()).getDays() < 0) this.setMenosVotado(candidato);
     }
 }
