@@ -1,0 +1,1 @@
+Em nosso trabalho, o único erro percebido foi em relação ao valgrind. Acontece que, na minha máquina (raony) o valgrind está correto no terminal ubuntu, mas no terminal do vscode dá erro. Não entendemos a razão, mas deixamos quieto, pois pedimos para que alguns amigos executem o código e eles tiveram o vallgrind correto também.
