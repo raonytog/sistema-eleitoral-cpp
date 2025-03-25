@@ -44,24 +44,26 @@ static bool comparaCandidatos(Candidato* a, Candidato* b) {
 }
 
 static bool comparaPartidos(Partido *a, Partido *b) {
-    int totalA = a->getVotosNominais() + a->getVotosLegenda(), 
-        totalB = b->getVotosNominais() + b->getVotosLegenda();
+    int totalA = a->getVotosNominais() + a->getVotosLegenda();
+    int totalB = b->getVotosNominais() + b->getVotosLegenda();
 
-    if (totalB - totalA != 0) return totalB - totalA;
-    return a->getNumero() - b->getNumero();
+    if (totalA != totalB) 
+        return totalA > totalB;  // Retorna true se 'a' tiver mais votos
+
+    return a->getNumero() < b->getNumero();  // Ordena pelo número se os votos forem iguais
 }
 
 static bool comparaPartidosPorCandidato(Partido *a, Partido *b) {
-    Candidato *c = a->getMaisVotado(),
-              *d = b->getMaisVotado();
+    Candidato *c = a->getMaisVotado(), *d = b->getMaisVotado();
 
-    if (c == NULL && d == NULL) return 0;
-    else if (c == NULL) return -1;
-    else if (d == NULL) return 1;
+    if (c == NULL && d == NULL) return false;
+    else if (c == NULL) return true;
+    else if (d == NULL) return false;
 
     int e = c->getVotos(), f = d->getVotos();
-    if ( (f - e) != 0) return f - e;
-    return d->getIdade(DATA_VOTACAO) - c->getIdade(DATA_VOTACAO);
+
+    if (e != f) return f < e;
+    return d->getIdade(DATA_VOTACAO) > c->getIdade(DATA_VOTACAO);
 }
 
 SistemaEleitoral::SistemaEleitoral(int &codMunicipio, string &pathCandidatos, string &diaVotacao) {
