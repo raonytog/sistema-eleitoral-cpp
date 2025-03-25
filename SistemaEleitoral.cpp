@@ -67,6 +67,7 @@ static bool comparaPartidosPorCandidato(Partido *a, Partido *b) {
 
 SistemaEleitoral::SistemaEleitoral(int &codMunicipio, string &pathCandidatos, string &diaVotacao) {
     this->codMunicipio = codMunicipio;
+    this->qtdEleitos = this->votosLegenda = this->votosNominais = 0;
 
     ifstream in(pathCandidatos);
 
@@ -247,4 +248,21 @@ int SistemaEleitoral::getVotosLegenda() {
  */
 int SistemaEleitoral::getVotosNominais() { 
     return this->votosNominais;
+}
+
+void SistemaEleitoral::liberaSistemaEleitoral() {
+    // deleta candidatos
+    for (auto& pair : candidatos) {
+        delete pair.second;
+    }
+    candidatos.clear();
+
+    // deleta partidos 
+    for (auto& pair : partidos) {
+        delete pair.second;
+    }
+    partidos.clear();
+
+    // deleta eleitos 
+    eleitos.clear();
 }

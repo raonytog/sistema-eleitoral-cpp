@@ -20,46 +20,11 @@ int main(int argc, char const *argv[]) {
     sistema->ContabilizaVotos(votos);
     
     Relatorios *relatorios = new Relatorios(sistema);
+    relatorios->geraRelatorios();
 
-    /** 1 */
-    relatorios->imprimeNumeroDeVagas();
-    cout << endl;
-
-    /** 2 */
-    relatorios->imprimeVereadoresEleitos();
-    cout << endl;
-    
-     /** 3 */
-    relatorios->imprimeCandidatosMaisVotados();
-    cout << endl;
-
-    /** 4 */
-    relatorios->imprimeSeriamEleitos();
-    cout << endl;
-
-    /** 5 */
-    relatorios->imprimeEleitosBeneficiados();
-    cout << endl;
-
-    /** 6 */
-    relatorios->imprimePartidosMaisVotados();
-    cout << endl;
-
-    /** 7 */
-    relatorios->imprimeExtremosDosPartidos();
-    cout << endl;
-
-    /** 8 */
-    relatorios->imprimeEleitosPorIdade();
-    cout << endl;
-
-    /** 9 */
-    relatorios->imprimeEleitosPorGenero();
-    cout << endl;
-    
-    /** 10 */
-    relatorios->imprimePorcentagensDeVoto();
-    cout << endl;
+    sistema->liberaSistemaEleitoral();
+    delete relatorios;
+    delete sistema;
     
     return 0;
 }

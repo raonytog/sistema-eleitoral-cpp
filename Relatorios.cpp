@@ -11,6 +11,7 @@ SistemaEleitoral *Relatorios::getSistemaEleitoral() {
 
 void Relatorios::imprimeNumeroDeVagas() {
     cout << "Número de vagas: " << this->getSistemaEleitoral()->getQtdEleitos() << endl;
+    cout << endl;
 }
 
 void Relatorios::imprimeVereadoresEleitos() {
@@ -23,6 +24,7 @@ void Relatorios::imprimeVereadoresEleitos() {
         cout << candidato->toString() << endl;
         i++;
     }
+    cout << endl;
 }
 
 void Relatorios::imprimeCandidatosMaisVotados() {
@@ -36,6 +38,7 @@ void Relatorios::imprimeCandidatosMaisVotados() {
         cout << candidato->toString() << endl;
         i++;
     }
+    cout << endl;
 }
 
 void Relatorios::imprimeSeriamEleitos() {
@@ -53,6 +56,7 @@ void Relatorios::imprimeSeriamEleitos() {
         }
         i++;
     }
+    cout << endl;
 }
 
 void Relatorios::imprimeEleitosBeneficiados() {
@@ -68,6 +72,7 @@ void Relatorios::imprimeEleitosBeneficiados() {
         }
         i++;
     }
+    cout << endl;
 }
 
 void Relatorios::imprimePartidosMaisVotados() {
@@ -104,6 +109,7 @@ void Relatorios::imprimePartidosMaisVotados() {
         cout << out.str() << endl;
         i++;
     }
+    cout << endl;
 }
 
 void Relatorios::imprimeExtremosDosPartidos() {
@@ -137,6 +143,7 @@ void Relatorios::imprimeExtremosDosPartidos() {
         cout << out.str() << endl;
         i++;
     }
+    cout << endl;
 }
 
 class custom_numpunct : public numpunct<char> {
@@ -156,14 +163,18 @@ void Relatorios::imprimeEleitosPorIdade() {
         else demais++;
     }
     
-    locale loc2(cout.getloc(), new custom_numpunct);
-	cout.imbue(loc2);
+    locale virgula(cout.getloc(), new custom_numpunct());
+	cout.imbue(virgula);
+
     cout << "Eleitos, por faixa etária (na data da eleição):" << endl;
     cout << "       Idade < 30: " << menorQue30 << " (" << fixed << setprecision(2) << (100.0 * menorQue30 / total) << "%)" << endl;
     cout << " 30 <= Idade < 40: " << menorQue40 << " (" << fixed << setprecision(2) << (100.0 * menorQue40 / total) << "%)" << endl;
     cout << " 40 <= Idade < 50: " << menorQue50 << " (" << fixed << setprecision(2) << (100.0 * menorQue50 / total) << "%)" << endl;
     cout << " 50 <= Idade < 60: " << menorQue60 << " (" << fixed << setprecision(2) << (100.0 * menorQue60 / total) << "%)" << endl;
     cout << " 60 <= Idade     : " << demais << " (" << fixed << setprecision(2) << (100.0 * demais / total) << "%)" << endl;
+    cout << endl;
+
+    cout.imbue(locale("C"));
 }
 
 void Relatorios::imprimeEleitosPorGenero() {
@@ -174,9 +185,16 @@ void Relatorios::imprimeEleitosPorGenero() {
         else fem++;
     }
 
+    locale virgula(cout.getloc(), new custom_numpunct());
+	cout.imbue(virgula);
+
     cout << "Eleitos, por gênero:" << endl;
     cout << "Feminino:  " << fem << " (" << fixed << setprecision(2) << (100.0 * fem / total) << "%)" << endl;
     cout << "Masculino: " << mas << " (" << fixed << setprecision(2) << (100.0 * mas / total) << "%)" << endl;
+    cout << endl;
+
+    cout.imbue(locale("C"));
+
 }
 
 void Relatorios::imprimePorcentagensDeVoto() {
@@ -187,4 +205,21 @@ void Relatorios::imprimePorcentagensDeVoto() {
     cout << "Total de votos válidos:    " << total << endl;
     cout << "Total de votos nominais:   " << this->getSistemaEleitoral()->getVotosNominais() << " (" << (100.0 * this->getSistemaEleitoral()->getVotosNominais() / total) << "%)" << endl;
     cout << "Total de votos de legenda: " << this->getSistemaEleitoral()->getVotosLegenda() << " (" << (100.0 * this->getSistemaEleitoral()->getVotosLegenda() / total) << "%)" << endl;
+    cout << endl;
+
+    cout.imbue(locale("C"));
+}
+
+void Relatorios::geraRelatorios() {
+    this->imprimeNumeroDeVagas();            /** 1 */
+    this->imprimeVereadoresEleitos();        /** 2 */
+    this->imprimeCandidatosMaisVotados();    /** 3 */
+    this->imprimeSeriamEleitos();            /** 4 */
+    this->imprimeEleitosBeneficiados();      /** 5 */
+    this->imprimePartidosMaisVotados();      /** 6 */
+    this->imprimeExtremosDosPartidos();      /** 7 */
+    this->imprimeEleitosPorIdade();          /** 8 */
+    this->imprimeEleitosPorGenero();         /** 9 */
+    this->imprimePorcentagensDeVoto();       /** 10 */
+    locale::global(std::locale("C"));
 }

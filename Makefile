@@ -48,6 +48,11 @@ run: $(EXECUTAVEL)
 clean: 
 	@rm *.o $(EXECUTAVEL) *.csv *.txt
 
+r:
+	clear
+	make
+	./deputados 1392 testes/AC1392/in/candidatos.csv testes/AC1392/in/votacao.csv 06/10/2024
+
 valgrind:
 	clear
 	make

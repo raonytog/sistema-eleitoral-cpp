@@ -94,6 +94,12 @@ public:
      * @return Retorna a quantidade de votos nominais
      */
     int getVotosNominais();
+
+    /**
+     * Libera a memória alocada para o sistema eleitora e seus atributos
+     * como candidatos e partidos
+     */
+    void liberaSistemaEleitoral();
 };
 
 #endif

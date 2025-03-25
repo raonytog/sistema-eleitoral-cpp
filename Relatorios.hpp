@@ -78,6 +78,11 @@ public:
      * Imprime a quantidade e porcentagem de cada tipo de voto 
      */
     void imprimePorcentagensDeVoto();
+
+    /**
+     * Gera todos os relatórios possíveis
+     */
+    void geraRelatorios();
 };
 
 #endif
