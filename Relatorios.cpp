@@ -207,7 +207,8 @@ void Relatorios::imprimeEleitosPorGenero() {
 void Relatorios::imprimePorcentagensDeVoto() {
     int total = this->getSistemaEleitoral()->getVotosNominais() + this->getSistemaEleitoral()->getVotosLegenda();
 
-    cout.imbue(locale(""));
+    locale brLocale("pt_BR.UTF-8");
+    cout.imbue(locale(brLocale));
     cout << fixed << setprecision(2);
     cout << "Total de votos válidos:    " << total << endl;
     cout << "Total de votos nominais:   " << this->getSistemaEleitoral()->getVotosNominais() << " (" << (100.0 * this->getSistemaEleitoral()->getVotosNominais() / total) << "%)" << endl;
